@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CreatableReactSelect from 'react-select/creatable';
 
 export const NoteForm = () => {
@@ -29,8 +30,10 @@ export const NoteForm = () => {
                 Text
             </label>
             <div className='mt-12 flex gap-8 items-center justify-center'>
-                <button className='bg-blue-500 text-white p-2 rounded-md w-1/3 hover:bg-blue-600 transition-all'>Save</button>
-                <button className='bg-red-500 text-white p-2 rounded-md w-1/3 hover:bg-red-600 transition-all'>Cancel</button>
+                <button type="submit" className='bg-blue-500 text-white p-2 rounded-md w-1/3 hover:bg-blue-600 transition-all'>Save</button>
+                <Link to=".." className='bg-red-500 text-white p-2 rounded-md w-1/3 hover:bg-red-600 transition-all text-center'>
+                    <button type="button">Cancel</button>
+                </Link>
             </div>
         </div>
     </form>
