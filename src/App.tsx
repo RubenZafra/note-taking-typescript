@@ -6,7 +6,7 @@ import { NewNote } from './components/NewNote'
 function App() {
 
   return (
-    <section className='h-screen bg-[#fff] flex items-center justify-center'>
+    <div className='h-screen bg-[#fff] flex items-center justify-center'>
       <Routes>
         <Route path="*" element={<Navigate to="/" replace/>} />
         <Route path="/" element={<h1>Home</h1>} />
@@ -16,7 +16,7 @@ function App() {
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
       </Routes>
-    </section>
+    </div>
   )
 }
 

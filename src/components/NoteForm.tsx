@@ -2,8 +2,8 @@ import CreatableReactSelect from 'react-select/creatable';
 
 export const NoteForm = () => {
   return (
-    <form className="py-10 flex gap-8">
-        <div className="relative">
+    <form className="py-10 flex gap-8 w-full items-center">
+        <div className="relative w-1/2">
             <input className="border border-gray-300 p-2 w-full peer placeholder-transparent" type="text" placeholder="Title" id="title" />
             <label className="text-xl text-gray-600 absolute left-2 -top-8 
                             peer-placeholder-shown:top-2 
@@ -13,10 +13,7 @@ export const NoteForm = () => {
                 Title
             </label>   
         </div>
-        <div className="relative">
-            <CreatableReactSelect isMulti placeholder="Tags..." />
-            
-        </div>
+            <CreatableReactSelect isMulti placeholder="Tags..." className='w-1/2'/>
     </form>
   )
 }
