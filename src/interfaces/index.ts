@@ -36,4 +36,11 @@ export interface NewNoteProps {
 
 export interface NoteListProps {
     availableTags: Tag[];
+    notes: SimplifiedNote[];
+}
+
+export interface SimplifiedNote {
+    tags: Tag[]
+    title: string
+    id: string
 }

@@ -36,7 +36,7 @@ function App() {
     <div className='h-screen bg-[#fff] flex items-center justify-center'>
       <Routes>
         <Route path="*" element={<Navigate to="/" replace/>} />
-        <Route path="/" element={<NoteList availableTags={tags} />} />
+        <Route path="/" element={<NoteList notes={noteWithTags} availableTags={tags} />} />
         <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
         <Route path="/:id" element={<h1>New</h1>} >
           <Route index element={<h1>Show</h1>} />

@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom"
 import ReactSelect from 'react-select/creatable';
-import { NoteListProps, Tag } from "../interfaces";
+import { NoteListProps, SimplifiedNote, Tag } from "../interfaces";
+import { NoteCard } from "./NoteCard";
 
-export const NoteList = ({ availableTags} : NoteListProps)=> {
+export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
 
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     const [title, setTitle] = useState("")
 
+    const filteredNotes = useMemo(() => {
+        return notes.filter(note => {
+            return (title === "" || note.title.toLowerCase().includes(title.toLowerCase())) 
+            && (selectedTags.length === 0 || selectedTags.every(tag => note.tags.some(noteTag => noteTag.id === tag.id)))
+        })
+    }, [title, selectedTags, notes])
+
   return (
-    <section className="flex flex-col text-center w-1/3">
-        <div className="flex justify-between mb-6">
+    <section className="flex flex-col text-center w-1/2">
+        <div className="flex justify-between mb-12">
             <h1 className="text-3xl font-bold p-4">Notes</h1>
             <div className="mr-4">
                 <Link to="/new">
@@ -19,7 +27,7 @@ export const NoteList = ({ availableTags} : NoteListProps)=> {
                 <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Edit Tags</button>
             </div>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-12">
             <div className="relative w-1/2 mr-4">
                     <input className="border border-gray-300 p-2 w-full peer placeholder-transparent" value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Title" id="title" required/>
                     <label className="text-xl text-gray-600 absolute left-2 -top-8 
@@ -49,6 +57,13 @@ export const NoteList = ({ availableTags} : NoteListProps)=> {
                 className='w-1/2'
             />
 
+        </div>
+        <div className="flex flex-wrap gap-3">
+            {filteredNotes.map(note => (
+                <div key={note.id} className="w-full">
+                    <NoteCard id={note.id} title={note.title} tags={note.tags}/>
+                </div>
+            ))}
         </div>
     </section>
   )
