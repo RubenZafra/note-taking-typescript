@@ -2,9 +2,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { NewNote } from './components/NewNote'
-import { RawNote, Tag } from './interfaces'
+import { NoteData, RawNote, Tag } from './interfaces'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { useMemo } from 'react'
+import { v4 as uuidV4 } from 'uuid'
+
+
 
 function App() {
 
@@ -17,13 +20,23 @@ function App() {
     })
   },[notes, tags])
 
+  const onCreateNote = ({tags, ...data}: NoteData) => {
+    setNotes(prevNotes => {
+      return [...prevNotes, {...data, id: uuidV4(), tagIds: tags.map(tag => tag.id) }]
+    })
+  }
+
+  const addTag = (tag: Tag) => {
+    setTags(prev => [...prev, tag])
+  }
+
   return (
 
     <div className='h-screen bg-[#fff] flex items-center justify-center'>
       <Routes>
         <Route path="*" element={<Navigate to="/" replace/>} />
         <Route path="/" element={<h1>Home</h1>} />
-        <Route path="/new" element={<NewNote />} />
+        <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
         <Route path="/:id" element={<h1>New</h1>} >
           <Route index element={<h1>Show</h1>} />
           <Route path="edit" element={<h1>Edit</h1>} />
