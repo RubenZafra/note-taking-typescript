@@ -6,6 +6,7 @@ import { NoteData, RawNote, Tag } from './interfaces'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { useMemo } from 'react'
 import { v4 as uuidV4 } from 'uuid'
+import { NoteList } from './components/NoteList'
 
 
 
@@ -35,7 +36,7 @@ function App() {
     <div className='h-screen bg-[#fff] flex items-center justify-center'>
       <Routes>
         <Route path="*" element={<Navigate to="/" replace/>} />
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<NoteList availableTags={tags} />} />
         <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
         <Route path="/:id" element={<h1>New</h1>} >
           <Route index element={<h1>Show</h1>} />
