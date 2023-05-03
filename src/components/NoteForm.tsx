@@ -4,11 +4,11 @@ import CreatableReactSelect from 'react-select/creatable';
 import { NoteFormProps, Tag } from '../interfaces';
 import { v4 as uuidV4 } from 'uuid';
 
-export const NoteForm = ({ onSubmit, onAddTag, availableTags} : NoteFormProps) => {
+export const NoteForm = ({ onSubmit, onAddTag, availableTags, title = "", markdown = "", tags = [] } : NoteFormProps) => {
 
     const titleRef = useRef<HTMLInputElement>(null);
-    const markdownRef = useRef<HTMLInputElement>(null);
-    const [selectedTags, setSelectedTags] = useState<Tag[]>([])
+    const markdownRef = useRef<HTMLTextAreaElement>(null);
+    const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
     const navigate = useNavigate()
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -27,7 +27,7 @@ export const NoteForm = ({ onSubmit, onAddTag, availableTags} : NoteFormProps) =
     <form onSubmit={handleSubmit} className="py-10 flex flex-col w-full items-center">
         <div className='flex flex-row gap-8 w-full mb-12'>
             <div className="relative w-1/2">
-                <input ref={titleRef} className="border border-gray-300 p-2 w-full peer placeholder-transparent" type="text" placeholder="Title" id="title" required/>
+                <input ref={titleRef} className="border border-gray-300 p-2 w-full peer placeholder-transparent" type="text" placeholder="Title" id="title" defaultValue={title} required/>
                 <label className="text-xl text-gray-600 absolute left-2 -top-8 
                                 peer-placeholder-shown:top-2 
                                 peer-placeholder-shown:text-base 
@@ -64,7 +64,16 @@ export const NoteForm = ({ onSubmit, onAddTag, availableTags} : NoteFormProps) =
             />
         </div>
         <div className='relative w-full'>
-            <input ref={markdownRef} className='border border-gray-300 p-2 w-full peer placeholder-transparent h-24' type="text" id="markdown" placeholder='Text...' required />
+            <textarea 
+                rows={20} 
+                cols={100} 
+                wrap="true" 
+                ref={markdownRef} 
+                className='border border-gray-300 p-2 w-full peer placeholder-transparent h-24' 
+                id="markdown" 
+                placeholder='Text...' 
+                defaultValue={markdown} 
+                required />
             <label 
                 className='text-xl text-gray-600 absolute left-2 -top-8
                             peer-placeholder-shown:top-2

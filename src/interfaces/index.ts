@@ -1,4 +1,3 @@
-import { NoteLayout } from '../components/NoteLayout';
 export interface Note extends NoteData { 
     id: string;
 }
@@ -23,14 +22,19 @@ export interface Tag {
     label: string;
 }
 
-export interface NoteFormProps {
+export type NoteFormProps = {
+    onSubmit: (data: NoteData) => void;
+    onAddTag: (tag: Tag) => void;
+    availableTags: Tag[];
+} & Partial<NoteData>
+
+export interface NewNoteProps {
     onSubmit: (data: NoteData) => void;
     onAddTag: (tag: Tag) => void;
     availableTags: Tag[];
 }
-
-export interface NewNoteProps {
-    onSubmit: (data: NoteData) => void;
+export interface EditNoteProps {
+    onSubmit: (id: string, data: NoteData) => void;
     onAddTag: (tag: Tag) => void;
     availableTags: Tag[];
 }
