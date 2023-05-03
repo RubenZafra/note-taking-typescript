@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useNote } from "../hooks/useNote"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown"
+import { NoteProps } from "../interfaces"
 
-export const Note = () => {
+export const Note = ({onDelete}: NoteProps) => {
 
     const note = useNote()
+    const navigate = useNavigate()
 
   return (
   <div className="flex flex-col items-center w-full">
@@ -31,7 +33,10 @@ export const Note = () => {
                 <Link to={`/${note.id}/edit`}>
                     <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">Edit</button>
                 </Link>
-                <button type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                <button onClick={()=>{
+                    onDelete(note.id)
+                    navigate('/')
+                    }} type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                 <Link to="/">
                     <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-4">Back</button>
                 </Link>

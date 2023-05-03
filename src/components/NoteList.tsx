@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom"
 import ReactSelect from 'react-select/creatable';
-import { NoteListProps, SimplifiedNote, Tag } from "../interfaces";
+import { NoteListProps, Tag } from "../interfaces";
 import { NoteCard } from "./NoteCard";
 
 export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
@@ -65,6 +65,7 @@ export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
                 </div>
             ))}
         </div>
+        <EditTagModal />
     </section>
   )
 }

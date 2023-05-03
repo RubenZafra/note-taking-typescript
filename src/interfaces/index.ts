@@ -53,3 +53,7 @@ export interface SimplifiedNote {
 export interface NoteLayoutProps {
     notes: Note[];
 }
+
+export interface NoteProps {
+    onDelete: (id: string) => void;
+}
