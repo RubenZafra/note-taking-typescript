@@ -3,8 +3,9 @@ import { Link } from "react-router-dom"
 import ReactSelect from 'react-select/creatable';
 import { NoteListProps, Tag } from "../interfaces";
 import { NoteCard } from "./NoteCard";
+import { EditTagsModal } from "./EditTagsModal";
 
-export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
+export const NoteList = ({ availableTags, notes, updateTag, deleteTag} : NoteListProps)=> {
 
     const [selectedTags, setSelectedTags] = useState<Tag[]>([])
     const [title, setTitle] = useState("")
@@ -24,7 +25,8 @@ export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
                 <Link to="/new">
                     <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">Create</button>
                 </Link>
-                <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Edit Tags</button>
+                <EditTagsModal availableTags={availableTags} updateTag={updateTag} deleteTag={deleteTag}/>
+                {/* <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Edit Tags</button> */}
             </div>
         </div>
         <div className="flex justify-between mb-12">
@@ -65,7 +67,7 @@ export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
                 </div>
             ))}
         </div>
-        <EditTagModal />
+        
     </section>
   )
 }

@@ -42,6 +42,8 @@ export interface EditNoteProps {
 export interface NoteListProps {
     availableTags: Tag[];
     notes: SimplifiedNote[];
+    deleteTag: (id: string) => void;
+    updateTag:  (id: string, label: string) => void;
 }
 
 export interface SimplifiedNote {
@@ -56,4 +58,12 @@ export interface NoteLayoutProps {
 
 export interface NoteProps {
     onDelete: (id: string) => void;
+}
+
+export interface ModalProps {
+    availableTags:  Tag[]; 
+    deleteTag: (id: string) => void;
+
+    updateTag: (id: string, label: string) => void;
+    
 }
