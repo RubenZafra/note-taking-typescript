@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom"
 import { useNote } from "../hooks/useNote"
+import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 
 export const Note = () => {
 
     const note = useNote()
 
   return (
+  <div className="flex flex-col items-center w-full">
     <section className="flex flex-col text-center w-2/3">
         <div className="flex justify-between mb-12">
             <div className="flex flex-col">
@@ -35,7 +37,10 @@ export const Note = () => {
                 </Link>
             </div>
         </div>
-
-    </section>
+        </section>
+        <div className="text-left w-2/3">
+            <ReactMarkdown>{note.markdown}</ReactMarkdown>
+        </div>
+    </div>
   )
 }
