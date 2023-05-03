@@ -6,7 +6,7 @@ export const NoteCard = ({id, title, tags}: SimplifiedNote) => {
     <Link to={`/${id}`} key={id}>
         <div className="flex flex-col items-center rounded overflow-hidden shadow-lg h-40 justify-center">
             <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">
+                <div className="font-bold text-3xl mb-2">
                     {title}
                 </div>
             </div>        

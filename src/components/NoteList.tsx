@@ -20,13 +20,12 @@ export const NoteList = ({ availableTags, notes, updateTag, deleteTag} : NoteLis
   return (
     <section className="flex flex-col text-center w-2/3">
         <div className="flex justify-between mb-12">
-            <h1 className="text-3xl font-bold p-4">Notes</h1>
+            <h1 className="text-5xl font-bold p-4">Notes</h1>
             <div className="mr-4">
                 <Link to="/new">
-                    <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">Create</button>
+                    <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-2 px-4 rounded m-4">Create</button>
                 </Link>
                 <EditTagsModal availableTags={availableTags} updateTag={updateTag} deleteTag={deleteTag}/>
-                {/* <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Edit Tags</button> */}
             </div>
         </div>
         <div className="flex justify-between mb-12">

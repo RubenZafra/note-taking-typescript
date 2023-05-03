@@ -13,7 +13,7 @@ export const Note = ({onDelete}: NoteProps) => {
     <section className="flex flex-col text-center w-2/3">
         <div className="flex justify-between mb-12">
             <div className="flex flex-col">
-                <h1 className="text-3xl font-bold p-4">{note.title}</h1>
+                <h1 className="text-5xl font-bold p-4">{note.title}</h1>
                 <div className="flex items-center justify-center">
                 {note.tags.length > 0 && (
                     <div className="pt-4 pb-2">
@@ -31,14 +31,14 @@ export const Note = ({onDelete}: NoteProps) => {
             
             <div className="mr-4">
                 <Link to={`/${note.id}/edit`}>
-                    <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">Edit</button>
+                    <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 text-xl px-4 rounded m-4">Edit</button>
                 </Link>
                 <button onClick={()=>{
                     onDelete(note.id)
                     navigate('/')
-                    }} type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                    }} type="button" className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 text-xl rounded">Delete</button>
                 <Link to="/">
-                    <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-4">Back</button>
+                    <button type="button" className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 text-xl rounded ml-4">Back</button>
                 </Link>
             </div>
         </div>
