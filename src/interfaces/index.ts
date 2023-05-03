@@ -1,3 +1,4 @@
+import { NoteLayout } from '../components/NoteLayout';
 export interface Note extends NoteData { 
     id: string;
 }
@@ -43,4 +44,8 @@ export interface SimplifiedNote {
     tags: Tag[]
     title: string
     id: string
+}
+
+export interface NoteLayoutProps {
+    notes: Note[];
 }

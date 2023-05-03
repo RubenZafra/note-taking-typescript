@@ -7,6 +7,8 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 import { useMemo } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 import { NoteList } from './components/NoteList'
+import { NoteLayout } from './components/NoteLayout'
+import { Note } from './components/Note'
 
 
 
@@ -38,8 +40,8 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace/>} />
         <Route path="/" element={<NoteList notes={noteWithTags} availableTags={tags} />} />
         <Route path="/new" element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags}/>} />
-        <Route path="/:id" element={<h1>New</h1>} >
-          <Route index element={<h1>Show</h1>} />
+        <Route path="/:id" element={<NoteLayout notes={noteWithTags}/>} >
+          <Route index element={<Note />} />
           <Route path="edit" element={<h1>Edit</h1>} />
         </Route>
       </Routes>

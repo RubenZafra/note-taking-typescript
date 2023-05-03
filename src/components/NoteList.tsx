@@ -17,7 +17,7 @@ export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
     }, [title, selectedTags, notes])
 
   return (
-    <section className="flex flex-col text-center w-1/2">
+    <section className="flex flex-col text-center w-2/3">
         <div className="flex justify-between mb-12">
             <h1 className="text-3xl font-bold p-4">Notes</h1>
             <div className="mr-4">
@@ -58,9 +58,9 @@ export const NoteList = ({ availableTags, notes} : NoteListProps)=> {
             />
 
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-row flex-wrap flex-start justify-center gap-4 w-full">
             {filteredNotes.map(note => (
-                <div key={note.id} className="w-full">
+                <div key={note.id} className="w-1/4">
                     <NoteCard id={note.id} title={note.title} tags={note.tags}/>
                 </div>
             ))}
