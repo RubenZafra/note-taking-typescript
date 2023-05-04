@@ -76,7 +76,7 @@ function App() {
 
   return (
 
-    <div className='h-screen bg-[#fff] flex items-center justify-center'>
+    <div className='h-screen bg-[#F6F1F1] flex items-center justify-center'>
       <Routes>
         <Route path="*" element={<Navigate to="/" replace/>} />
         <Route path="/" element={<NoteList deleteTag={deleteTag} updateTag={updateTag} notes={noteWithTags} availableTags={tags} />} />

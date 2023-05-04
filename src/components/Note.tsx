@@ -43,7 +43,7 @@ export const Note = ({onDelete}: NoteProps) => {
             </div>
         </div>
         </section>
-        <div className="text-left w-2/3">
+        <div className=" w-2/3">
             <ReactMarkdown>{note.markdown}</ReactMarkdown>
         </div>
     </div>

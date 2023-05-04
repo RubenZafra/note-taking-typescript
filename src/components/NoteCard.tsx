@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const NoteCard = ({id, title, tags}: SimplifiedNote) => {
   return (
     <Link to={`/${id}`} key={id}>
-        <div className="flex flex-col items-center rounded overflow-hidden shadow-lg h-40 justify-center">
+        <div className="flex flex-col items-center rounded overflow-hidden shadow-lg h-40 justify-center bg-[#AFD3E2]">
             <div className="px-6 py-4">
                 <div className="font-bold text-3xl mb-2">
                     {title}
